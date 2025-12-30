@@ -1,18 +1,30 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useHabits } from '@/features/habits/hooks/useHabits';
 import { useEntries } from '@/features/entries/hooks/useEntries';
 import { DailyCheckIn } from '@/features/entries/components/DailyCheckIn';
 import { Modal } from '@/shared/components/Modal';
 import { HabitForm } from '@/features/habits/components/HabitForm';
 import { EmptyState } from '@/shared/components/EmptyState';
+import { KeyboardShortcutsModal } from '@/components/KeyboardShortcutsModal';
+import { Toast } from '@/shared/components/Toast';
+import { useKeyboardShortcuts } from '@/shared/hooks/useKeyboardShortcuts';
 import { today } from '@/shared/utils/date';
 import { Habit } from '@/types';
+
+type UndoAction = {
+  type: 'toggle';
+  habitId: string;
+  habitName: string;
+  wasCompleted: boolean;
+};
 
 export function TodayView() {
   const { habits, addHabit, updateHabit } = useHabits();
   const { isCompleted, toggleEntry, getCompletionCount } = useEntries();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShortcutsModalOpen, setIsShortcutsModalOpen] = useState(false);
   const [editingHabit, setEditingHabit] = useState<Habit | undefined>();
+  const [undoAction, setUndoAction] = useState<UndoAction | null>(null);
 
   const todayCompletions = getCompletionCount(today());
   const totalHabits = habits.length;
@@ -34,6 +46,55 @@ export function TodayView() {
     setEditingHabit(undefined);
     setIsModalOpen(true);
   };
+
+  const handleToggleWithUndo = (habitId: string) => {
+    const habit = habits.find(h => h.id === habitId);
+    if (!habit) return;
+
+    const wasCompleted = isCompleted(habitId);
+    toggleEntry(habitId);
+
+    // Show undo toast
+    setUndoAction({
+      type: 'toggle',
+      habitId,
+      habitName: habit.name,
+      wasCompleted,
+    });
+  };
+
+  const handleUndo = () => {
+    if (!undoAction) return;
+
+    if (undoAction.type === 'toggle') {
+      // Toggle back to previous state
+      toggleEntry(undoAction.habitId);
+    }
+
+    setUndoAction(null);
+  };
+
+  // Keyboard shortcuts
+  const shortcuts = useMemo(() => [
+    {
+      key: 'n',
+      description: 'Create new habit',
+      action: handleOpenModal,
+    },
+    {
+      key: '?',
+      description: 'Show keyboard shortcuts',
+      action: () => setIsShortcutsModalOpen(true),
+    },
+    // Number keys 1-9 for quick toggle
+    ...habits.slice(0, 9).map((habit, index) => ({
+      key: String(index + 1),
+      description: `Toggle ${habit.name}`,
+      action: () => handleToggleWithUndo(habit.id),
+    })),
+  ], [habits, handleToggleWithUndo]);
+
+  useKeyboardShortcuts(shortcuts);
 
   return (
     <div className="space-y-6">
@@ -99,7 +160,7 @@ export function TodayView() {
         <DailyCheckIn
           habits={habits}
           isCompleted={isCompleted}
-          onToggle={toggleEntry}
+          onToggle={handleToggleWithUndo}
         />
       )}
 
@@ -121,6 +182,27 @@ export function TodayView() {
           }}
         />
       </Modal>
+
+      {/* Keyboard shortcuts modal */}
+      <KeyboardShortcutsModal
+        isOpen={isShortcutsModalOpen}
+        onClose={() => setIsShortcutsModalOpen(false)}
+      />
+
+      {/* Undo toast */}
+      <Toast
+        message={
+          undoAction
+            ? `${undoAction.habitName} ${undoAction.wasCompleted ? 'unchecked' : 'checked off'}`
+            : ''
+        }
+        isVisible={!!undoAction}
+        onClose={() => setUndoAction(null)}
+        action={{
+          label: 'Undo',
+          onClick: handleUndo,
+        }}
+      />
     </div>
   );
 }

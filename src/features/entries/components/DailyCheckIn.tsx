@@ -54,12 +54,12 @@ export function DailyCheckIn({
                 className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
                   completed
                     ? `${colors.border} ${colors.bg}`
-                    : 'border-gray-300 bg-white'
+                    : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700'
                 }`}
               >
                 {completed && (
                   <svg
-                    className={`w-4 h-4 ${colors.text}`}
+                    className="w-4 h-4 text-gray-900 dark:text-gray-100"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -81,13 +81,13 @@ export function DailyCheckIn({
               <div className="flex-1 min-w-0">
                 <h3
                   className={`font-semibold truncate ${
-                    completed ? colors.text : 'text-gray-900'
+                    completed ? 'text-gray-900 dark:text-gray-100' : 'text-gray-900 dark:text-gray-100'
                   }`}
                 >
                   {habit.name}
                 </h3>
                 {habit.description && (
-                  <p className="text-sm text-gray-500 truncate">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
                     {habit.description}
                   </p>
                 )}
@@ -95,7 +95,7 @@ export function DailyCheckIn({
 
               {/* Completion indicator */}
               {completed && (
-                <div className={`text-sm font-medium ${colors.text} flex-shrink-0`}>
+                <div className="text-sm font-medium text-gray-900 dark:text-gray-100 flex-shrink-0">
                   ✓ Done
                 </div>
               )}

@@ -8,6 +8,9 @@ A clean, product-focused habit tracking app built with React, TypeScript, and Ta
 - **Smart Statistics**: Track streaks, completion rates, and progress
 - **Visual Charts**: Weekly progress bars and 30-day heat maps
 - **Dark Mode by Default**: Beautiful dark theme with toggle to light mode
+- **Keyboard Shortcuts**: Navigate and toggle habits quickly with keyboard shortcuts (press `?` to see all)
+- **Undo Actions**: Instant undo for habit toggles with toast notifications
+- **Data Export/Import**: Backup and restore your data with JSON export/import
 - **Clean UX**: Mobile-first design with intuitive navigation
 - **Offline-first**: All data stored locally using localStorage
 
@@ -90,15 +93,24 @@ src/
 - **Class-based strategy**: Tailwind's dark mode with React Context
 - **Design tokens**: HABIT_COLORS include both light and dark variants
 - **No flash**: Inline script applies theme before page renders
+- **Optimized readability**: High-contrast text ensures readability in both light and dark modes
+
+### User Experience
+
+- **Keyboard shortcuts**: Press `n` to create new habit, `1-9` to toggle habits, `?` for help
+- **Undo functionality**: 5-second undo window for habit toggles with visual feedback
+- **Data portability**: Export all data as timestamped JSON, import with validation and confirmation
+- **Toast notifications**: Non-intrusive feedback for actions and exports
 
 ## Future Enhancements
 
-- Export/import data (JSON)
 - Custom habit scheduling (specific weekdays)
 - Habit notes and reflections
 - Achievement badges
 - PWA capabilities
 - Cloud sync (optional)
+- Search and filter habits
+- Analytics dashboard with insights
 
 ## License
 

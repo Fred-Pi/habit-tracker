@@ -55,16 +55,12 @@ export function StatsView() {
                   className={`text-left p-3 rounded-lg border-2 transition-all ${
                     isSelected
                       ? `${colors.border} ${colors.bg}`
-                      : 'border-gray-200 bg-white hover:border-gray-300'
+                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{habit.icon}</span>
-                    <span
-                      className={`font-medium ${
-                        isSelected ? colors.text : 'text-gray-900'
-                      }`}
-                    >
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
                       {habit.name}
                     </span>
                   </div>

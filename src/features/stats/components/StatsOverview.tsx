@@ -42,11 +42,11 @@ export function StatsOverview({ habit, stats }: StatsOverviewProps) {
         <div className="flex items-center gap-3">
           <span className="text-3xl">{habit.icon}</span>
           <div>
-            <h2 className={`text-xl font-bold ${colors.text}`}>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
               {habit.name}
             </h2>
             {habit.description && (
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                 {habit.description}
               </p>
             )}
@@ -59,7 +59,7 @@ export function StatsOverview({ habit, stats }: StatsOverviewProps) {
         {statCards.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white rounded-lg border-2 border-gray-200 p-4 hover:border-gray-300 transition-colors"
+            className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 p-4 hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
           >
             <div className="text-2xl mb-2">{stat.icon}</div>
             <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -68,7 +68,7 @@ export function StatsOverview({ habit, stats }: StatsOverviewProps) {
                 {stat.suffix}
               </span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-1">{stat.label}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">{stat.label}</div>
           </div>
         ))}
       </div>

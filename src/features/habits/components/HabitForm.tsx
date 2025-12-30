@@ -37,7 +37,7 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="habit-name" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="habit-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Habit Name *
         </label>
         <input
@@ -46,14 +46,14 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="e.g., Morning workout"
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           autoFocus
           required
         />
       </div>
 
       <div>
-        <label htmlFor="habit-description" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="habit-description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Description (optional)
         </label>
         <textarea
@@ -62,12 +62,12 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Why is this habit important to you?"
           rows={2}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Icon
         </label>
         <div className="grid grid-cols-8 gap-2">
@@ -89,7 +89,7 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Color
         </label>
         <div className="grid grid-cols-8 gap-2">
@@ -111,7 +111,7 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Frequency
         </label>
         <div className="space-y-2">
@@ -140,7 +140,7 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
 
       {targetFrequency === 'weekly' && (
         <div>
-          <label htmlFor="target-count" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="target-count" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Times per week
           </label>
           <input
@@ -150,7 +150,7 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
             max="7"
             value={targetCount}
             onChange={(e) => setTargetCount(Number(e.target.value))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           />
         </div>
       )}
@@ -159,7 +159,7 @@ export function HabitForm({ habit, onSubmit, onCancel }: HabitFormProps) {
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-50 transition-colors"
         >
           Cancel
         </button>

@@ -24,11 +24,11 @@ export function HabitCard({ habit, onEdit, onArchive, children }: HabitCardProps
               {habit.name}
             </h3>
             {habit.description && (
-              <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
                 {habit.description}
               </p>
             )}
-            <div className="mt-2 text-xs text-gray-500">
+            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
               {habit.targetFrequency === 'daily' ? (
                 <span>Daily</span>
               ) : (
@@ -43,7 +43,7 @@ export function HabitCard({ habit, onEdit, onArchive, children }: HabitCardProps
             {onEdit && (
               <button
                 onClick={() => onEdit(habit)}
-                className="p-2 rounded-md hover:bg-white/60 transition-colors text-gray-600 hover:text-gray-900"
+                className="p-2 rounded-md hover:bg-white/60 dark:hover:bg-gray-700/60 transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
                 aria-label="Edit habit"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,7 +54,7 @@ export function HabitCard({ habit, onEdit, onArchive, children }: HabitCardProps
             {onArchive && (
               <button
                 onClick={() => onArchive(habit.id)}
-                className="p-2 rounded-md hover:bg-white/60 transition-colors text-gray-600 hover:text-red-600"
+                className="p-2 rounded-md hover:bg-white/60 dark:hover:bg-gray-700/60 transition-colors text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
                 aria-label="Archive habit"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ export function HabitCard({ habit, onEdit, onArchive, children }: HabitCardProps
       </div>
 
       {children && (
-        <div className="mt-3 pt-3 border-t border-gray-200/50">
+        <div className="mt-3 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
           {children}
         </div>
       )}

@@ -18,7 +18,7 @@ export function DailyCheckIn({
     return (
       <div className="text-center py-12">
         <div className="text-6xl mb-4">🎯</div>
-        <h3 className="text-xl font-semibold text-gray-700 mb-2">
+        <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
           No habits yet
         </h3>
         <p className="text-gray-500">
@@ -30,7 +30,7 @@ export function DailyCheckIn({
 
   return (
     <div className="space-y-3">
-      <h2 className="text-lg font-semibold text-gray-700 mb-4">
+      <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
         {formatDate(date, 'long')}
       </h2>
 
@@ -45,7 +45,7 @@ export function DailyCheckIn({
             className={`w-full text-left rounded-lg border-2 p-4 transition-all ${
               completed
                 ? `${colors.border} ${colors.bg} shadow-sm`
-                : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
+                : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-sm'
             }`}
           >
             <div className="flex items-center gap-3">

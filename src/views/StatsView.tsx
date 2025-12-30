@@ -35,12 +35,12 @@ export function StatsView() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Statistics</h1>
+      <div className="bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 p-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Statistics</h1>
 
         {/* Habit selector */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Select Habit
           </label>
           <div className="grid grid-cols-1 gap-2">

@@ -13,8 +13,8 @@ export function HeatMap({ data, color = 'bg-green-500' }: HeatMapProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg border-2 border-gray-200 p-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+    <div className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 p-4">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Last 30 Days
       </h3>
 
@@ -25,7 +25,7 @@ export function HeatMap({ data, color = 'bg-green-500' }: HeatMapProps) {
           return (
             <div key={day.date} className="flex flex-col items-center">
               {isWeekStart && index < 7 && (
-                <div className="text-xs text-gray-500 mb-1 h-4">
+                <div className="text-xs text-gray-500 dark:text-gray-400 mb-1 h-4">
                   {getDayName(day.date).slice(0, 1)}
                 </div>
               )}
@@ -43,7 +43,7 @@ export function HeatMap({ data, color = 'bg-green-500' }: HeatMapProps) {
               />
 
               {index >= data.length - 7 && (
-                <div className="text-xs text-gray-400 mt-1">
+                <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                   {formatDate(day.date, 'short').split(' ')[1]}
                 </div>
               )}
@@ -52,13 +52,13 @@ export function HeatMap({ data, color = 'bg-green-500' }: HeatMapProps) {
         })}
       </div>
 
-      <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-600">
+      <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-600 dark:text-gray-400">
         <div className="flex items-center gap-1">
           <div className={`w-3 h-3 rounded ${color}`} />
           <span>Completed</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-gray-100 border border-gray-200" />
+          <div className="w-3 h-3 rounded bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600" />
           <span>Not completed</span>
         </div>
       </div>

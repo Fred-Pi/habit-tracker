@@ -38,11 +38,11 @@ export function TodayView() {
   return (
     <div className="space-y-6">
       {/* Header with progress */}
-      <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Today</h1>
-            <p className="text-gray-500 text-sm mt-1">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Today</h1>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
               {new Date().toLocaleDateString('en-US', {
                 weekday: 'long',
                 month: 'long',
@@ -52,7 +52,7 @@ export function TodayView() {
           </div>
           <button
             onClick={handleOpenModal}
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center gap-2"
+            className="px-4 py-2 bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -69,12 +69,12 @@ export function TodayView() {
         {totalHabits > 0 && (
           <div>
             <div className="flex items-center justify-between text-sm mb-2">
-              <span className="text-gray-600">Daily Progress</span>
-              <span className="font-semibold text-gray-900">
+              <span className="text-gray-600 dark:text-gray-400">Daily Progress</span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
                 {todayCompletions} / {totalHabits}
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
               <div
                 className="bg-primary-600 h-full rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${completionPercentage}%` }}

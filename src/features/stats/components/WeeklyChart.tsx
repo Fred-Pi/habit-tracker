@@ -14,8 +14,8 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
   }));
 
   return (
-    <div className="bg-white rounded-lg border-2 border-gray-200 p-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+    <div className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 p-4">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Weekly Progress (Last 12 Weeks)
       </h3>
 
@@ -51,17 +51,17 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
         </BarChart>
       </ResponsiveContainer>
 
-      <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-600">
+      <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-600 dark:text-gray-400">
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-green-500" />
+          <div className="w-3 h-3 rounded bg-green-500 dark:bg-green-400" />
           <span>Target met</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-orange-500" />
+          <div className="w-3 h-3 rounded bg-orange-500 dark:bg-orange-400" />
           <span>Close</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-blue-500" />
+          <div className="w-3 h-3 rounded bg-blue-500 dark:bg-blue-400" />
           <span>Below target</span>
         </div>
       </div>
